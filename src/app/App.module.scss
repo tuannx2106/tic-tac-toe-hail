@@ -34,3 +34,12 @@
   margin-right: 28px;
 }
 
+.gameOverMessage {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  
+  svg {
+    font-size: 64px;
+  }
+}

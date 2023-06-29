@@ -7,7 +7,7 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
   title: React.ReactNode;
-  titleLead?: string;
+  titleLead?: string | null;
   onOk?: () => void;
   okBtnProps?: ButtonProps;
   okText?: string;
@@ -36,7 +36,7 @@ const Prompt = ({
         role="presentation"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="container">
+        <div>
           <p className={s.lead}>{titleLead}</p>
           <p className={s.title}>{title}</p>
           <div className={s.actions}>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { PlayerSymbol } from 'types';
+import { BoardCellState, PlayerSymbol } from 'types';
 import { IconO, IconX } from 'components/Icons';
 import clsx from 'clsx';
 import s from './Cell.module.scss';
 
 type Props = {
-  value: PlayerSymbol | null;
+  value: BoardCellState;
   onClick: () => void;
   isFilled?: boolean;
 };

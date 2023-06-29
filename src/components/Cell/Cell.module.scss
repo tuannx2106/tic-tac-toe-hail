@@ -10,6 +10,7 @@
   height: 140px;
   font-size: 64px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &.filledBlue {
     background: var(--cl-light-blue);

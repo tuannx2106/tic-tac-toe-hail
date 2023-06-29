@@ -1,14 +1,15 @@
 import React from 'react';
 import Cell from 'components/Cell';
-import { PlayerSymbol } from 'types';
+import { BoardState } from 'types';
 import s from './Board.module.scss';
 
 type Props = {
-  boardState: Array<PlayerSymbol | null>;
+  boardState: BoardState;
   onClickCell: (cellNumber: number) => void;
+  winningLine?: number[];
 };
 
-const Board = ({ boardState, onClickCell }: Props) => {
+const Board = ({ boardState, onClickCell, winningLine = [] }: Props) => {
   return (
     <div className={s.board}>
       {boardState.map((playerSym, index) => (
@@ -16,6 +17,7 @@ const Board = ({ boardState, onClickCell }: Props) => {
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           value={playerSym}
+          isFilled={winningLine.includes(index)}
           onClick={() => onClickCell(index)}
         />
       ))}
