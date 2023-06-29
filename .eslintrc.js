@@ -22,9 +22,11 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react', 'unused-imports'],
   rules: {
+    'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     // ts plugin
     'no-use-before-define': 'off',
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
@@ -66,6 +68,8 @@ module.exports = {
         tsx: 'never',
       },
     ],
+
+    'no-shadow': 'off',
 
     // _variable for private variable, for disable ignore unused-var rule
     'no-underscore-dangle': 'off',

@@ -1,0 +1,23 @@
+.cellRoot {
+  display: flex;
+  align-items: center;
+  color: var(--cl-semi-dark-navy);
+  justify-content: center;
+  border-radius: 15px;
+  background: var(--cl-semi-dark-navy);
+  box-shadow: 0px -8px 0px 0px #10212A inset;
+  width: 140px;
+  height: 140px;
+  font-size: 64px;
+  cursor: pointer;
+
+  &.filledBlue {
+    background: var(--cl-light-blue);
+    box-shadow: 0px -8px 0px 0px #118C87 inset;
+  }
+
+  &.filledYellow {
+    background: var(--cl-light-yellow);
+    box-shadow: 0px -8px 0px 0px #CC8B13 inset;
+  }
+}
