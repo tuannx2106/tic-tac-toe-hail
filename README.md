@@ -17,7 +17,7 @@ preview on localhost:3000
 ## Questions
 
 - How much time did you spend on the challenge?
-  - A: around 7 hours
+  - A: around 8 hours
 - What would you improve if you had more time to spend on this coding challenge?
   - I would add more unit tests
   - Considerately handle more edge cases like:
