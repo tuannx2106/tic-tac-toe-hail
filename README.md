@@ -1,10 +1,12 @@
+### Tic tac toe game
+
 ## Tech Stack
 
-Node v18.14.2
-React v18
-Typescript v4
+- Node v18.14.2
+- React v18
+- Typescript v4
 
-## Getting Started
+## Start the project
 
 ```bash
 yarn dev
@@ -12,7 +14,19 @@ yarn dev
 
 preview on localhost:3000
 
+## Questions
+
+- How much time did you spend on the challenge?
+  - A: around 7 hours
+- What would you improve if you had more time to spend on this coding challenge?
+  - I would add more unit tests
+  - Considerately handle more edge cases like:
+    - overflow content in game stats. If player 1 wins more than 1 million times, the text will overflow the box
+    - confirm again about why in flow 3, player 1 is O. But in flow 4, player 1 is X.
+
 ## Folder structure
+
+For the sake of simple, this folder structure is specific to this project only.
 
 ```
 .src
