@@ -89,7 +89,7 @@ const App = () => {
       <div className="container">
         <GameHeader
           gameMessage={getGameMessage()}
-          onClickResetButton={onResetGame}
+          onClickResetButton={() => setIsResetPromptOpen(true)}
         />
         <Board
           boardState={boardState}
