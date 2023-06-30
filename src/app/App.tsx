@@ -4,8 +4,14 @@ import StartScreen from 'components/StartScreen';
 import { IconO, IconX } from 'components/Icons';
 import Prompt from 'components/Prompt';
 import Board from 'components/Board';
+import GameStats from 'components/GameStats';
+import GameHeader from 'components/GameHeader';
 import s from './App.module.scss';
 import { hasWinner } from './utils';
+
+const X_WINNING_NUMBER_LOCAL_STORAGE_KEY = 'xWinningNumber';
+const O_WINNING_NUMBER_LOCAL_STORAGE_KEY = 'oWinningNumber';
+const TIES_NUMBER_LOCAL_STORAGE_KEY = 'tiesNumber';
 
 const App = () => {
   const [isResetPromptOpen, setIsResetPromptOpen] = useState(false);
@@ -47,12 +53,31 @@ const App = () => {
     onCloseGameTiePrompt();
   };
 
+  // When there is a winner
   useEffect(() => {
-    if (winner) setIsGameHasWinnerPromptOpen(true);
+    if (winner) {
+      setIsGameHasWinnerPromptOpen(true);
+
+      // record winner to local storage
+      if (winner === PlayerSymbol.O) {
+        const currentOWinningNumber = Number(localStorage.getItem(O_WINNING_NUMBER_LOCAL_STORAGE_KEY)) || 0;
+        localStorage.setItem(O_WINNING_NUMBER_LOCAL_STORAGE_KEY, String(currentOWinningNumber + 1));
+      } else {
+        const currentXWinningNumber = Number(localStorage.getItem(X_WINNING_NUMBER_LOCAL_STORAGE_KEY)) || 0;
+        localStorage.setItem(X_WINNING_NUMBER_LOCAL_STORAGE_KEY, String(currentXWinningNumber + 1));
+      }
+    }
   }, [winner]);
 
+  // When the game tie
   useEffect(() => {
-    if (isGameTie) setIsGameTiePromptOpen(true);
+    if (isGameTie) {
+      setIsGameTiePromptOpen(true);
+
+      // record to local storage
+      const currenTiesGameNumber = Number(localStorage.getItem(TIES_NUMBER_LOCAL_STORAGE_KEY)) || 0;
+      localStorage.setItem(TIES_NUMBER_LOCAL_STORAGE_KEY, String(currenTiesGameNumber + 1));
+    }
   }, [isGameTie]);
 
   if (!isStarted) {
@@ -62,31 +87,19 @@ const App = () => {
   return (
     <div className={s.root}>
       <div className="container">
-        <div className={s.gameInfoArea}>
-          <div className={s.iconGroup}>
-            <IconX /> &nbsp;
-            <IconO />
-          </div>
-          <p className={s.gameMessage}>{getGameMessage()}</p>
-          <figure
-            role="presentation"
-            aria-label="reset button"
-            onClick={() => setIsResetPromptOpen(true)}
-          >
-            <img
-              src="/img/img_replay-btn.png"
-              alt="replay"
-              style={{
-                cursor: 'pointer',
-                width: 52,
-              }}
-            />
-          </figure>
-        </div>
+        <GameHeader
+          gameMessage={getGameMessage()}
+          onClickResetButton={onResetGame}
+        />
         <Board
           boardState={boardState}
           onClickCell={onClickCell}
           winningLine={winningLine}
+        />
+        <GameStats
+          xWinNumber={Number(localStorage.getItem(X_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
+          oWinNumber={Number(localStorage.getItem(O_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
+          tiesNumber={Number(localStorage.getItem(TIES_NUMBER_LOCAL_STORAGE_KEY))}
         />
       </div>
       <Prompt
@@ -111,7 +124,7 @@ const App = () => {
       <Prompt
         isOpen={isGameHasWinnerPromptOpen}
         onClose={onCloseGameHasWinnerPrompt}
-        titleLead={winner && `PLAYER ${winner === PlayerSymbol.O ? 1 : 2} WINS!`}
+        titleLead={winner && `PLAYER ${winner === PlayerSymbol.O ? 2 : 1} WINS!`}
         title={
           <span className={s.gameOverMessage}>
             {winner === PlayerSymbol.X ? <IconX /> : <IconO />}

@@ -1,0 +1,27 @@
+.gameInfoArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.iconGroup {
+  font-size: 32px;
+}
+
+.gameMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  color: var(--cl-silver);
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: var(--cl-semi-dark-navy);
+  box-shadow: 0px -4px 0px 0px #10212A inset;
+  padding: 12px 12px 20px;
+  width: 140px;
+  margin-right: 28px;
+}

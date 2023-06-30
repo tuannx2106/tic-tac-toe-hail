@@ -1,0 +1,41 @@
+.gameStats {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  padding: 12px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  width: 140px;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+
+  &.isDark {
+    background-color: var(--cl-semi-dark-navy);
+    color: rgba(0, 0, 0, 0.25);
+  }
+
+  &.isSilver {
+    background-color: var(--cl-silver);
+  }
+
+  &.isBlue {
+    background-color: var(--cl-light-blue);
+  }
+
+  &.isYellow {
+    background-color: var(--cl-light-yellow);
+  }
+}
+
+.title {
+  font-size: 14px;
+}
+
+.stat {
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
