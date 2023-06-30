@@ -9,7 +9,7 @@
 ## Start the project
 
 ```bash
-yarn dev
+yarn start
 ```
 
 preview on localhost:3000
