@@ -19,6 +19,7 @@ const Cell = ({ value, onClick, isFilled }: Props) => {
         [s.filledBlue]: value === PlayerSymbol.X && isFilled,
         [s.filledYellow]: value === PlayerSymbol.O && isFilled,
       })}
+      aria-label={`board cell ${value}`}
     >
       {value === PlayerSymbol.O && <IconO isColored={!isFilled} />}
       {value === PlayerSymbol.X && <IconX isColored={!isFilled} />}

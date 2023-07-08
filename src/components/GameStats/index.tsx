@@ -13,7 +13,12 @@ const GameStats = ({ xWinNumber = 0, oWinNumber = 0, tiesNumber = 0 }: Props) =>
     <div className={s.gameStats}>
       <div className={clsx(s.card, s.isBlue)}>
         <p className={s.title}>X (P1)</p>
-        <p className={s.stat}>{xWinNumber}</p>
+        <p
+          className={s.stat}
+          aria-label="player 1 winning number"
+        >
+          {xWinNumber}
+        </p>
       </div>
       <div
         className={clsx(s.card, {
@@ -22,11 +27,21 @@ const GameStats = ({ xWinNumber = 0, oWinNumber = 0, tiesNumber = 0 }: Props) =>
         })}
       >
         <p className={s.title}>Ties</p>
-        <p className={s.stat}>{tiesNumber}</p>
+        <p
+          className={s.stat}
+          aria-label="game draw number"
+        >
+          {tiesNumber}
+        </p>
       </div>
       <div className={clsx(s.card, s.isYellow)}>
         <p className={s.title}>X (P1)</p>
-        <p className={s.stat}>{oWinNumber}</p>
+        <p
+          className={s.stat}
+          aria-label="player 2 winning number"
+        >
+          {oWinNumber}
+        </p>
       </div>
     </div>
   );
