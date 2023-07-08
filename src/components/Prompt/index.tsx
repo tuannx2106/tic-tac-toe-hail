@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ButtonProps } from 'components/Button';
+import { motion } from 'framer-motion';
 import s from './Prompt.module.scss';
 
 type Props = {
@@ -26,7 +27,11 @@ const Prompt = ({
 }: Props) => {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
-    <div
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={s.wrapper}
       role="presentation"
       onClick={onClose}
@@ -51,7 +56,7 @@ const Prompt = ({
           </div>
         </div>
       </div>
-    </div>,
+    </motion.div>,
     document.getElementById('prompt-overlay') as HTMLElement
   );
 };

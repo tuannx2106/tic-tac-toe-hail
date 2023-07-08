@@ -2,6 +2,7 @@ import React from 'react';
 import { BoardCellState, PlayerSymbol } from 'types';
 import { IconO, IconX } from 'components/Icons';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import s from './Cell.module.scss';
 
 type Props = {
@@ -21,8 +22,22 @@ const Cell = ({ value, onClick, isFilled }: Props) => {
       })}
       aria-label={`board cell ${value}`}
     >
-      {value === PlayerSymbol.O && <IconO isColored={!isFilled} />}
-      {value === PlayerSymbol.X && <IconX isColored={!isFilled} />}
+      {value === PlayerSymbol.O && (
+        <motion.div
+          style={{ lineHeight: 0 }}
+          animate={{ scale: [0, 1] }}
+        >
+          <IconO isColored={!isFilled} />
+        </motion.div>
+      )}
+      {value === PlayerSymbol.X && (
+        <motion.span
+          style={{ lineHeight: 0 }}
+          animate={{ scale: [0, 1] }}
+        >
+          <IconX isColored={!isFilled} />
+        </motion.span>
+      )}
     </div>
   );
 };

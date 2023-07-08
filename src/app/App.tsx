@@ -6,6 +6,7 @@ import Prompt from 'components/Prompt';
 import Board from 'components/Board';
 import GameStats from 'components/GameStats';
 import GameHeader from 'components/GameHeader';
+import { motion } from 'framer-motion';
 import s from './App.module.scss';
 import { hasWinner } from './utils';
 
@@ -85,23 +86,30 @@ const App = () => {
   }
 
   return (
-    <div className={s.root}>
-      <div className="container">
-        <GameHeader
-          gameMessage={getGameMessage()}
-          onClickResetButton={() => setIsResetPromptOpen(true)}
-        />
-        <Board
-          boardState={boardState}
-          onClickCell={onClickCell}
-          winningLine={winningLine}
-        />
-        <GameStats
-          xWinNumber={Number(localStorage.getItem(X_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
-          oWinNumber={Number(localStorage.getItem(O_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
-          tiesNumber={Number(localStorage.getItem(TIES_NUMBER_LOCAL_STORAGE_KEY))}
-        />
-      </div>
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={s.root}
+      >
+        <div className="container">
+          <GameHeader
+            gameMessage={getGameMessage()}
+            onClickResetButton={() => setIsResetPromptOpen(true)}
+          />
+          <Board
+            boardState={boardState}
+            onClickCell={onClickCell}
+            winningLine={winningLine}
+          />
+          <GameStats
+            xWinNumber={Number(localStorage.getItem(X_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
+            oWinNumber={Number(localStorage.getItem(O_WINNING_NUMBER_LOCAL_STORAGE_KEY))}
+            tiesNumber={Number(localStorage.getItem(TIES_NUMBER_LOCAL_STORAGE_KEY))}
+          />
+        </div>
+      </motion.div>
       <Prompt
         isOpen={isResetPromptOpen}
         onClose={onCloseResetPrompt}
@@ -141,7 +149,7 @@ const App = () => {
         cancelText="Quit"
         okText="Next round"
       />
-    </div>
+    </>
   );
 };
 

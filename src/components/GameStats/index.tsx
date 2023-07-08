@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import { motion } from 'framer-motion';
 import s from './GameStarts.module.scss';
 
 type Props = {
@@ -10,7 +11,13 @@ type Props = {
 
 const GameStats = ({ xWinNumber = 0, oWinNumber = 0, tiesNumber = 0 }: Props) => {
   return (
-    <div className={s.gameStats}>
+    <motion.div
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={s.gameStats}
+    >
       <div className={clsx(s.card, s.isBlue)}>
         <p className={s.title}>X (P1)</p>
         <p
@@ -43,7 +50,7 @@ const GameStats = ({ xWinNumber = 0, oWinNumber = 0, tiesNumber = 0 }: Props) =>
           {oWinNumber}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
