@@ -35,7 +35,7 @@ const GameStats = ({ xWinNumber = 0, oWinNumber = 0, tiesNumber = 0 }: Props) =>
         </p>
       </div>
       <div className={clsx(s.card, s.isYellow)}>
-        <p className={s.title}>X (P1)</p>
+        <p className={s.title}>O (P2)</p>
         <p
           className={s.stat}
           aria-label="player 2 winning number"
